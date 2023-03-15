@@ -1,4 +1,5 @@
-
+const button = document.querySelector('button#pop-up');
+button.addEventListener('click', getSize);
 
 function createBoard(size) {
     const board = document.querySelector('div.board');
@@ -22,7 +23,7 @@ function getSize() {
     let input = prompt('How many squares for each side of the grid?');
     let message = document.querySelector('p#message');
 
-    if (input.value.trim().length === 0) {
+    if (input.trim().length === 0) {
         message.innerText = 'Please input a number from 1 - 100';
     } else if (isNaN(input)) {
         message.innerText = 'Please input a number from 1 - 100';
