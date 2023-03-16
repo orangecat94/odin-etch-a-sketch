@@ -1,5 +1,26 @@
 const button = document.querySelector('button#pop-up');
-button.addEventListener('click', getSize);
+button.addEventListener('click', () => {
+
+    const size = getSize();
+    createBoard(size);
+});
+
+function getSize() {
+    let input = prompt('How many squares for each side of the grid?');
+    let message = document.querySelector('p#message');
+
+    if (input.trim().length === 0) {
+        message.innerText = 'Please input a number from 1 - 100';
+    } else if (isNaN(input)) {
+        message.innerText = 'Please input a number from 1 - 100';
+    } else if (input < 0 || input > 100) {
+        message.innerText = 'Please input a number from 1 - 100';
+    } else {
+        message.innerText = 'Proceed';
+    }
+
+    return input;
+}
 
 function createBoard(size) {
     const board = document.querySelector('div.board');
@@ -19,19 +40,4 @@ function createBoard(size) {
     }
 }
 
-function getSize() {
-    let input = prompt('How many squares for each side of the grid?');
-    let message = document.querySelector('p#message');
-
-    if (input.trim().length === 0) {
-        message.innerText = 'Please input a number from 1 - 100';
-    } else if (isNaN(input)) {
-        message.innerText = 'Please input a number from 1 - 100';
-    } else if (input < 0 || input > 100) {
-        message.innerText = 'Please input a number from 1 - 100';
-    } else {
-        message.innerText = 'Proceed';
-    }
-
-}
-createBoard(20);
+// TODO: Pass input value to createBoard
