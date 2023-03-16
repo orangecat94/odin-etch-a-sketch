@@ -36,8 +36,11 @@ function createBoard(size) {
         div.style.borderColor = 'black';
         div.style.borderStyle = 'solid';
         div.style.borderWidth = 'thin';
+
+        div.addEventListener('mouseover', () => {
+            div.style.backgroundColor = 'green';
+        })
+
         board.appendChild(div);
     }
 }
-
-// TODO: Pass input value to createBoard
