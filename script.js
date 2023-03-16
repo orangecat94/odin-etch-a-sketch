@@ -1,9 +1,13 @@
 const button = document.querySelector('button#pop-up');
+const resetButton = document.querySelector('button#reset');
+
 button.addEventListener('click', () => {
 
     const size = getSize();
     createBoard(size);
 });
+
+resetButton.addEventListener('click', resetGrid);
 
 function getSize() {
     let input = prompt('How many squares for each side of the grid?');
@@ -32,10 +36,11 @@ function createBoard(size) {
 
     for (let i = 0; i < numDivs; i++) {
         const div = document.createElement('div');
-        div.style.backgroundColor = 'yellow';
-        div.style.borderColor = 'black';
-        div.style.borderStyle = 'solid';
-        div.style.borderWidth = 'thin';
+        div.classList.add('grid');
+        div.style.backgroundColor = 'white';
+        // div.style.borderColor = 'black';
+        // div.style.borderStyle = 'solid';
+        // div.style.borderWidth = 'thin';
 
         div.addEventListener('mouseover', () => {
             div.style.backgroundColor = 'green';
@@ -43,4 +48,10 @@ function createBoard(size) {
 
         board.appendChild(div);
     }
+}
+
+function resetGrid() {
+    gridDivs = document.querySelectorAll('div.grid');
+    gridDivs.forEach(gridDiv => gridDiv.style.backgroundColor = 'white');
+
 }
