@@ -1,5 +1,8 @@
 const button = document.querySelector('button#pop-up');
 const resetButton = document.querySelector('button#reset');
+const body = document.querySelector('body');
+
+let click = false;
 
 button.addEventListener('click', () => {
 
@@ -8,6 +11,16 @@ button.addEventListener('click', () => {
 });
 
 resetButton.addEventListener('click', resetGrid);
+
+body.addEventListener('click', (e) => {
+
+    // console.log(e.target);
+
+    if (e.target.tagName != 'BUTTON') {
+        click = !click;
+    }
+    
+})
 
 function getSize() {
     let input = prompt('How many squares for each side of the grid?');
@@ -43,7 +56,11 @@ function createBoard(size) {
         // div.style.borderWidth = 'thin';
 
         div.addEventListener('mouseover', () => {
-            div.style.backgroundColor = 'green';
+            if (click === true) {
+                div.style.backgroundColor = 'green';
+            }
+
+            return;
         })
 
         board.appendChild(div);
